@@ -1,0 +1,34 @@
+{
+  "name": "blogist",
+  "version": "1.0.0",
+  "homepage": "http://blogist.github.com",
+  "authors": [
+    "Jichao Ouyang <oyanglulu@gmail.com>"
+  ],
+  "description": "blog with gist",
+  "main": "index.html",
+  "keywords": [
+    "blog",
+    "gist"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootswatch": "~3.1.1",
+    "underscore": "~1.6.0",
+    "kokaku": "~0.0.1"
+  },
+  "devDependencies": {
+    "chai": "~1.9.0",
+    "sinon": "~1.8.2"
+  },
+  "resolutions": {
+    "q": "1.0.1"
+  }
+}
