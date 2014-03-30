@@ -1,15 +1,19 @@
-<ul class="list-group">
-	{% for gist in data %}
-	<li class="list-group-item">
-		<a href="#/gist/{{gist.id}}/{{gist.description}}">
-			{% if gist.description  %}
-			{{gist.description}}
-			{% else %}
-			{% for name, file in gist.files %}
-			{{name}} 
-			{% endfor%}
-			{% endif %}
-		</a>
-  </li>
-	{% endfor%}
-</ul>
+<table class="table table-striped table-hover ">
+  <tbody>
+		{% for gist in data %}
+		<tr>
+			<td>
+			<a href="#/gist/{{gist.id}}/{{gist.description}}">
+				{% if gist.description  %}
+				{{gist.description}}
+				{% else %}
+				{% for name, file in gist.files %}
+				{{name}} 
+				{% endfor%}
+				{% endif %}
+			</a>
+			</td>
+		</tr>
+		{% endfor%}
+  </tbody>
+</table>
