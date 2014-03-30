@@ -45,27 +45,12 @@ var crawlPage = function(idx, arr) {
 	console.log("lenght ",arr.length);
   if (idx < arr.length) {
 		// console.log(arr);
-    var uri = "http://localhost:8000/#/jcouyang/" + arr[idx].id;
+    var uri = "http://{{homepage}}/#/" + arr[idx].id;
 		console.log(uri);
     var browser = new Browser(browserOpts);
     var promise = browser.visit(uri)
     .then(function() {
-      // Turn links into absolute links
-      // and save them, if we need to
-      // and we haven't already crawled them
-				// var links = browser.queryAll('a');
-				// links.forEach(function(link) {
-				// 	var href = link.getAttribute('href');
-				// 	var absUrl = url.resolve(uri, href);
-				// 	link.setAttribute('href', absUrl);
-				// 	if (arr.indexOf(absUrl) < 0) {
-				// 		arr.push(absUrl);
-				// 	}
-				// });
-
-      // Save
       saveSnapshot(uri, browser.html());
-      // Call again on the next iteration
 			crawlPage(idx+1, arr);
     });
   }
@@ -73,7 +58,7 @@ var crawlPage = function(idx, arr) {
 
 console.log("start snapping");
 
-https.get({host:"api.github.com",path:"/users/jcouyang/gists","headers": {'User-Agent':"Mozilla/5.0","Content-Type":	"application/json"}}, function(res) {
+https.get({host:"api.github.com",path:"/users/{{github_name}}/gists","headers": {'User-Agent':"Mozilla/5.0","Content-Type":	"application/json"}}, function(res) {
 	res.setEncoding('utf8');
 	var data = "";
   res.on('data', function (chunk) {
@@ -84,7 +69,7 @@ https.get({host:"api.github.com",path:"/users/jcouyang/gists","headers": {'User-
 		crawlPage(0, JSON.parse(data)); 
 	});
 }).on('error', function(e) {
-  // console.error(e);
+  console.error(e);
 });
 												
 

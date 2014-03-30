@@ -5,6 +5,8 @@ function getToken(){
 	return "";
 }
 
+var username = $("meta[name=username]").attr("content");
+
 var userModel = new Model("user","get@https://api.github.com/user"+ getToken());
 
 var bloglistModel = new Model("bloglist","get@https://api.github.com/users/jcouyang/gists");
@@ -41,6 +43,6 @@ router.get("/", function(){
 	bloglist.render();
 });
 
-router.get("/jcouyang/:gistid",function(params,data){
-	new BlogDetailView({model:new blogdetailModel("blogdetail",'get@https://gist.github.com/jcouyang/'+ params.gistid +".json")}).render();
+router.get("/:gistid",function(params,data){
+	new BlogDetailView({model:new blogdetailModel("blogdetail",'get@https://gist.github.com/'+username+'/'+ params.gistid +".json")}).render();
 });

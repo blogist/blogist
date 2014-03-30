@@ -41,8 +41,8 @@ module.exports = function(grunt) {
 		sitemap: {
       dist: {
         siteRoot: './',
-				pattern:'/jcouyang/*.html',
-				homepage:"http://localhost:8000"
+				pattern:'/{{github_name}}/*.html',
+				homepage:"{{homepage}}"
       }
     }
 	});
