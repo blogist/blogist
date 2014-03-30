@@ -42,6 +42,7 @@ exports.template = function(grunt, init, done) {
 	init.process({}, [
 		// Prompt for these values.
 		init.prompt('github_name'),
+		init.prompt('author_name'),
 		init.prompt('blog_title',"Blogist"),
 		init.prompt('description',"A blogging framework for real hackers"),
 		init.prompt('homepage'),

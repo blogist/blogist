@@ -24,7 +24,7 @@ var feed = new RSS({
     feed_url: '{{homepage}}/rss.xml',
     site_url: '{{homepage}}',
     image_url: '{{homepage}}/favicon.png',
-    author: '{{github_name}}',
+    author: '{{author_name}}',
     language: 'en',
     ttl: '60'
 });
