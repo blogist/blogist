@@ -1,7 +1,7 @@
 <ul class="list-group">
 	{% for gist in data %}
 	<li class="list-group-item">
-		<a href="#/{{gist.user.login}}/{{gist.id}}">
+		<a href="#/gist/{{gist.id}}/{{gist.description}}">
 			{% if gist.description  %}
 			{{gist.description}}
 			{% else %}

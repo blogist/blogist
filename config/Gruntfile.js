@@ -41,7 +41,7 @@ module.exports = function(grunt) {
 		sitemap: {
       dist: {
         siteRoot: './',
-				pattern:'/{{github_name}}/*.html',
+				pattern:'/gist/*.html',
 				homepage:"{{homepage}}"
       }
     }

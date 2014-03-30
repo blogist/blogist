@@ -1,7 +1,10 @@
 var Browser = require('zombie'),
     url     = require('url'),
     fs      = require('fs'),
-    saveDir = __dirname;
+    saveDir = __dirname,
+		p = require("path"),
+		RSS = require('rss'),
+		mkdirp = require("mkdirp");
 var https = require('https');
 var scriptTagRegex = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
 
@@ -15,6 +18,22 @@ var browserOpts = {
   runScripts: true
 }
 
+var feed = new RSS({
+    title: "{{blog_title}}",
+    description: "{{description}}",
+    feed_url: '{{homepage}}/rss.xml',
+    site_url: '{{homepage}}',
+    image_url: '{{homepage}}/favicon.png',
+    author: '{{github_name}}',
+    language: 'en',
+    ttl: '60'
+});
+
+/* loop over data and add to feed */
+
+
+// cache the xml to send to clients
+var xml = feed.xml();
 var saveSnapshot = function(uri, body) {
   var lastIdx = uri.lastIndexOf('#/');
 
@@ -30,30 +49,52 @@ var saveSnapshot = function(uri, body) {
   if (path === '/') path = "/index.html";
 
   if (path.indexOf('.html') == -1)
-    path += ".html";
+    path += "index.html";
 
   var filename = saveDir + path;
+	mkdirp.sync(p.dirname(filename));
+	console.log("mkdir",filename);
+	fs.writeFileSync(p.resolve(filename), body);
 	console.log("save",filename);
-  fs.open(filename, 'w', function(e, fd) {
-    if (e) return;
-    fs.write(fd, body);
-  });
 };
 
 var crawlPage = function(idx, arr) {
   // location = window.location
-	console.log("lenght ",arr.length);
   if (idx < arr.length) {
 		// console.log(arr);
-    var uri = "http://{{homepage}}/#/" + arr[idx].id;
+		var gist = arr[idx];
+		var postfix,title;
+		console.log(gist.files);
+		if (gist.description){
+			postfix = gist.description + ".html";
+			title=gist.description;
+			}
+		else{
+			postfix= "index.html";
+			for (var f in gist.files){
+				title=f;
+				break;
+				}
+			}
+    var uri = "{{homepage}}/#/gist/" + arr[idx].id + "/" + arr[idx].description;
 		console.log(uri);
+		feed.item({
+			title: title,
+			description: gist.description,
+			url: "{{homepage}}/gist/" + arr[idx].id + "/" + postfix, // link to the item
+			author: gist.owner, // optional - defaults to feed author property
+			date: gist.created_at // any format that js Date can parse.
+		});
     var browser = new Browser(browserOpts);
     var promise = browser.visit(uri)
     .then(function() {
       saveSnapshot(uri, browser.html());
 			crawlPage(idx+1, arr);
     });
-  }
+  }else{
+		var xml = feed.xml();
+		fs.writeFileSync("rss.xml",xml);
+	}
 };
 
 console.log("start snapping");
@@ -66,7 +107,8 @@ https.get({host:"api.github.com",path:"/users/{{github_name}}/gists","headers": 
   });
 
 	res.on('end',function(){
-		crawlPage(0, JSON.parse(data)); 
+		crawlPage(0, JSON.parse(data));
+
 	});
 }).on('error', function(e) {
   console.error(e);

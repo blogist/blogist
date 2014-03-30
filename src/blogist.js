@@ -43,6 +43,10 @@ router.get("/", function(){
 	bloglist.render();
 });
 
-router.get("/:gistid",function(params,data){
+router.get("/gist/:gistid/?",function(params,data){
+	new BlogDetailView({model:new blogdetailModel("blogdetail",'get@https://gist.github.com/'+username+'/'+ params.gistid +".json")}).render();
+});
+
+router.get("/gist/:gistid/.+",function(params,data){
 	new BlogDetailView({model:new blogdetailModel("blogdetail",'get@https://gist.github.com/'+username+'/'+ params.gistid +".json")}).render();
 });
