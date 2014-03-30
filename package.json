@@ -6,12 +6,12 @@
   "directories": {
     "test": "tests"
   },
-  "scripts": {
-    "test": "grunt deploy"
+		"scripts": {
+			"test": "grunt deploy"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jcouyang/js-mvc-dojo.git"
+    "url": "https://github.com/blogist/blogist.git"
   },
   "keywords": [
     "blog",
@@ -20,9 +20,9 @@
   "author": "Jichao Ouyang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jcouyang/js-mvc-dojo/issues"
+    "url": "https://github.com/blogist/blogist/issues"
   },
-  "homepage": "https://github.com/jcouyang/js-mvc-dojo",
+		"homepage": "https://blogist.github.com",
   "devDependencies": {
     "mocha": "~1.17.1",
     "grunt-mocha": "~0.4.10",
