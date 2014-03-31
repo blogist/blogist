@@ -1,6 +1,8 @@
 language: node_js
 before_install:
-- phantomjs --version
+    - phantomjs --version
+    - npm install -g grunt-cli
+    - npm install -g grunt-init
 branches:
   only:
   - master
