@@ -2,15 +2,12 @@ language: node_js
 before_install:
     - phantomjs --version
     - npm install -g grunt-cli
-    - npm install -g grunt-init
 branches:
   only:
   - master
 node_js:
 - '0.10'
 script:
-    - grunt-init config
-    - npm grunt
     - npm test
 after_success:
 - node crawl
