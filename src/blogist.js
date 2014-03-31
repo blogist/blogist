@@ -26,10 +26,13 @@ router.get("/", function(){
 	bloglist.render();
 });
 
+function blogDetailOf(gistid){
+	return new BlogDetailView({model:new blogdetailModel(gistid,'get@https://gist.github.com/'+username+'/'+ gistid +".json")}).render();
+}
 router.get("/gist/:gistid/?",function(params,data){
-	new BlogDetailView({model:new blogdetailModel("blogdetail",'get@https://gist.github.com/'+username+'/'+ params.gistid +".json")}).render();
+	blogDetailOf(params.gistid);
 });
 
 router.get("/gist/:gistid/.+",function(params,data){
-	new BlogDetailView({model:new blogdetailModel(params.gistid,'get@https://gist.github.com/'+username+'/'+ params.gistid +".json")}).render();
+	blogDetailOf(params.gistid);
 });
