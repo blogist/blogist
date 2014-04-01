@@ -24,17 +24,20 @@ exports.template = function(grunt, init, done) {
 		// Actually copy (and process) files.
 		init.copyAndProcess(files, props);
 		props.settings=true;
+		var travis = nunjucks.render("config/.travis.yml",props);
 		var gruntfile = nunjucks.render("config/Gruntfile.js",props);
 		var index = nunjucks.render("config/index.html",props);
 		var crawl = nunjucks.render("config/crawl.js",props);
-		var travis = nunjucks.render("config/.travis.yml",props);
+
 		// init.writePackageJSON('Gruntfile.js',gruntfile);
+		grunt.file.write(".travis.yml",travis);
 		grunt.file.write("Gruntfile.js",gruntfile);
 		grunt.file.write("index.html",index);
 		grunt.file.write("crawl.js",crawl);
-		grunt.file.write(".travis.yml",travis);
+
 		// All done!
 		grunt.file.write(settingsPath, JSON.stringify(props,null,2));
+
 		grunt.verbose.or.ok();
 		done();
 	}
@@ -51,7 +54,7 @@ exports.template = function(grunt, init, done) {
 		init.prompt('description',"A blogging framework for real hackers"),
 		init.prompt('homepage'),
 		init.prompt("theme", "lumen"),
-		init.prompt("repository"),
+		init.prompt("repo"),
 		init.prompt("branch", "master")
 	], config);
 }

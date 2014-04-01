@@ -11,12 +11,13 @@
 ** 3 mins setup (assuming you are familiar with github, heroku and travis)
 
 *** 1st min: config your own blogist
-- fork or clone blogist
+- fork [[https://github.com/blogist/blogist][blogist]] then clone
   #+BEGIN_SRC sh
-    git clone https://github.com/blogist/blogist.git
+    git clone https://github.com/<github username>/blogist.git
     cd blogist
   #+END_SRC
-- follow the first step [[https://pages.github.com][here.]] and remember your [repo url]
+
+- follow the first step [[https://pages.github.com][here.]] and copy your github page [repo url], copy the https one, not ssh
 
 - config blogist
 #+BEGIN_SRC sh
@@ -30,10 +31,11 @@ then you will get prompt about how to setup your blogist
 
 you'll have to input  the following:(* required)
 - 'github_name*': your github username
+- 'homepage*': your blog url, with 'https?:\\'
+- 'repo*': [repo url] you copy before
 - 'author_name': optional, by default your git config user.name
 - 'blog_title': title of your blog
 - 'description':description of your blog
-- 'homepage*': your blog url, with 'https?:\\'
 - "theme": choose your blog theme, by default lumen, or anythin you like here http://bootswatch.com/
 - 'branch': default master, or gh-pages if you like.
 
