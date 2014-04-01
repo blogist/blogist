@@ -6,17 +6,19 @@
 
 #+END_SRC
 
-[![Build Status](https://travis-ci.org/blogist/blogist.svg)](https://travis-ci.org/blogist/blogist)
+[[https://travis-ci.org/blogist/blogist.svg][Build Status]]
 
-** 3 mins setup (assuming you have familiar with github, heroku and travis)
+** 3 mins setup (assuming you are familiar with github, heroku and travis)
 
 *** 1st min: config your own blogist
-create a user site or project site
+- fork or clone blogist
+  #+BEGIN_SRC sh
+    git clone https://github.com/blogist/blogist.git
+    cd blogist
+  #+END_SRC
+- follow the first step [[https://pages.github.com][here.]] and remember your [repo url]
 
-follow the first step [[https://pages.github.com][here.]] and remember your [repo url]
-
-go to the repo.
-
+- config blogist
 #+BEGIN_SRC sh
 npm install
 npm install grunt-init grunt-cli -g
@@ -40,12 +42,21 @@ you'll have to input  the following:(* required)
 **** run grunt task
 #+BEGIN_SRC sh
 grunt
+python -m SimpleHTTPServer
 #+END_SRC
 
 open [[http://localhost:8000]] in your browser make sure you see your gist lists.
 
+if ok =CTRL C=
+
 **** Setup CI
-open https://travis-ci.org/profile and find your repo
+- open https://travis-ci.org/profile and find your repo
+
+#+BEGIN_SRC 
+curl -u 'your_github_name' -d '{"scopes":["public_repo"], "note":"Travis access"}' https://api.github.com/authorizations
+gem install travis
+travis encrypt GH_TOKEN=your_token --add
+#+END_SRC
 
 toggle on
 [[https://www.evernote.com/shard/s23/sh/2e07a498-2644-4aae-b643-81edfaacba4c/ae26f6c429221033ae60d34f8d3618b4/deep/0/Travis-CI---Free-Hosted-Continuous-Integration-Platform-for-the-Open-Source-Community.png]]
@@ -56,7 +67,7 @@ wait for a while
 #+BEGIN_SRC sh
 git remote add blogist [repo url]
 git add config/settings.json
-git commit -m "init config"
+git commit -am "init config"
 git push blogist master
 #+END_SRC
 
@@ -79,3 +90,5 @@ grunt mocha
 #+END_SRC
 
 ** Issues
+feel free posting issues here
+[[https://github.com/blogist/blogist/issues]]
