@@ -1,0 +1,81 @@
+#+BEGIN_SRC 
+     ____ ____ ____ ____ ____ ____ ____
+    ||B |||L |||O |||G |||I |||S |||T ||
+    ||__|||__|||__|||__|||__|||__|||__||
+    |/__\|/__\|/__\|/__\|/__\|/__\|/__\|
+
+#+END_SRC
+
+[![Build Status](https://travis-ci.org/blogist/blogist.svg)](https://travis-ci.org/blogist/blogist)
+
+** 3 mins setup (assuming you have familiar with github, heroku and travis)
+
+*** 1st min: config your own blogist
+create a user site or project site
+
+follow the first step [[https://pages.github.com][here.]] and remember your [repo url]
+
+go to the repo.
+
+#+BEGIN_SRC sh
+npm install
+npm install grunt-init grunt-cli -g
+bower install
+grunt-init config
+#+END_SRC
+
+then you will get prompt about how to setup your blogist
+
+you'll have to input  the following:(* required)
+- 'github_name*': your github username
+- 'author_name': optional, by default your git config user.name
+- 'blog_title': title of your blog
+- 'description':description of your blog
+- 'homepage*': your blog url, with 'https?:\\'
+- "theme": choose your blog theme, by default lumen, or anythin you like here http://bootswatch.com/
+- 'branch': default master, or gh-pages if you like.
+
+
+*** 2nd min: push your blogist
+**** run grunt task
+#+BEGIN_SRC sh
+grunt
+#+END_SRC
+
+open [[http://localhost:8000]] in your browser make sure you see your gist lists.
+
+**** Setup CI
+open https://travis-ci.org/profile and find your repo
+
+toggle on
+[[https://www.evernote.com/shard/s23/sh/2e07a498-2644-4aae-b643-81edfaacba4c/ae26f6c429221033ae60d34f8d3618b4/deep/0/Travis-CI---Free-Hosted-Continuous-Integration-Platform-for-the-Open-Source-Community.png]]
+wait for a while
+
+**** push to github page
+
+#+BEGIN_SRC sh
+git remote add blogist [repo url]
+git add config/settings.json
+git commit -m "init config"
+git push blogist master
+#+END_SRC
+
+*** 3rd min: SEO
+- go to the your repo's travis
+- open inspector goto network tab
+- click rebuild
+- right click the rebuild url and select "Copy as Curl"
+   [[https://www.evernote.com/shard/s23/sh/e39526d7-c8cc-42bc-a171-7155dc0dcfe3/f1bc7380292d94e00a941b61775566b3/deep/0/Screen-Shot-2014-04-01-at-12.45.15-PM.png]]
+- open https://addons.heroku.com/marketplace/scheduler
+- add this addon to any of your heroku app. then open https://scheduler.heroku.com/dashboard.
+- click add job then paste the curl you just copied.
+- set the frequency as often as you like to cache your blogist for seo.
+
+** Contribute
+
+*** run test
+#+BEGIN_SRC sh
+grunt mocha
+#+END_SRC
+
+** Issues

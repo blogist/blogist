@@ -1,0 +1,20 @@
+language: node_js
+before_install:
+    - phantomjs --version
+    - npm install -g grunt-cli
+branches:
+  only:
+  - master
+node_js:
+- '0.10'
+script:
+    - npm test
+after_success:
+{% if settings %}
+- node crawl
+- grunt sitemap
+- git add gist sitemap.xml rss.xml index.html
+- git commit -m 'publi:ship:'
+- git checkout -B {{branch}}
+- git push -f
+{% endif%}
