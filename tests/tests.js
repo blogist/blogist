@@ -58,13 +58,17 @@ describe('view test', function(){
 		});
 	});
 
-	describe("router get gist id", function(done){
-		it("render detail view", function(){
-			blogDetailOf = done;
+	describe("router", function(){
+		it("render detail view", function(done){
+			blogDetailOf = function(){
+				done();
+			};
 			window.location.hash = "/gist/111222";
 		});
-		it("render list view", function(){
-			bloglist = done;
+		it("render list view", function(done){
+			bloglist.render = function(){
+				done();
+			};
 			window.location.hash = "/";
 		});
 	});
