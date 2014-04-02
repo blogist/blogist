@@ -22,13 +22,13 @@ var bloglist = new BloglistView();
 
 var router = new Router();
 router.get("/", function(){
-	console.log("homepage");
 	bloglist.render();
 });
 
-function blogDetailOf(gistid){
+var blogDetailOf = function(gistid){
 	return new BlogDetailView({model:new blogdetailModel(gistid,'get@https://gist.github.com/'+username+'/'+ gistid +".json")}).render();
-}
+};
+
 router.get("/gist/:gistid/?",function(params,data){
 	blogDetailOf(params.gistid);
 });
