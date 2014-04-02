@@ -1,7 +1,8 @@
 language: node_js
 before_install:
     - phantomjs --version
-    - npm install -g grunt-cli
+    - npm install -g grunt-cli grunt-init bower
+    - bower install
 branches:
   only:
   - master
