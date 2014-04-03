@@ -11,7 +11,7 @@ node_js:
 before_script:
 - git config --global user.name "{{author_name}}"
 - git config --global user.email "{{author_email}}"
-- export REPO_URL="https://$GH_TOKEN@{{repo|replace("https://", "")}}"
+- export REPO_URL="https://$GH_TOKEN@{{ghpage_repo|replace("https://", "")}}"
 
 script:
     {% if settings %}
