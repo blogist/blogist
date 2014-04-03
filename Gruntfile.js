@@ -41,8 +41,8 @@ module.exports = function(grunt) {
 		sitemap: {
       dist: {
         siteRoot: './',
-				pattern:'/gist/*.html',
-				homepage:"http://localhost:8000"
+				pattern:'/gist/**/*.html',
+				homepage:""
       }
     }
 	});

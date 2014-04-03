@@ -54,7 +54,7 @@ exports.template = function(grunt, init, done) {
 		init.prompt('description',"A blogging framework for real hackers"),
 		init.prompt('homepage'),
 		init.prompt("theme", "lumen"),
-		init.prompt("repo"),
+		init.prompt("ghpage_repo"),
 		init.prompt("branch", "master")
 	], config);
 }
