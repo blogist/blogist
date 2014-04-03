@@ -63,7 +63,7 @@ var crawlPage = function(idx, arr) {
 						
 						feed.item({
 							title: title,
-							description: browser.text("article"),
+							description: browser.html("article"),
 							url: url, // link to the item
 							author: gist.owner, // optional - defaults to feed author property
 							date: gist.created_at // any format that js Date can parse.
