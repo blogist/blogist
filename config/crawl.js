@@ -12,12 +12,22 @@ var stripScriptTags = function(html) {
   return html.replace(scriptTagRegex, '');
 }
 
+var feed = new RSS({
+  title: "Jichao Ouyang's Blogist",
+  description: "<img src=https://travis-ci.org/jcouyang/jcouyang.github.com.svg> or failed",
+  feed_url: '{{homepage}}/rss.xml',
+  site_url: '{{homepage}}',
+  image_url:'{{homepage}}/favicon.png',
+  author: 'Jichao Ouyang',
+  language: 'en',
+  ttl: '60'
+});
+
 var browserOpts = {
   waitFor: 5000,
   loadCSS: true,
   runScripts: true
 };
-var xml = feed.xml();
 var saveSnapshot = function(uri, body) {
  
   var path = url.parse(uri).pathname;
@@ -32,7 +42,6 @@ var saveSnapshot = function(uri, body) {
 var crawlPage = function(idx, arr) {
 		var gist = arr[idx];
 		var postfix,title;
-		// console.log(gist.files);
 		if (gist.description){
 			postfix = gist.description + "/index.html";
 			title=gist.description;
