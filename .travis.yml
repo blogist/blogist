@@ -21,7 +21,7 @@ after_success:
 - git remote add blogist $REPO_URL
 - git checkout -B master
 - git rm .travis.yml
-- git add sitemap.xml index.html javascripts bower_components -f
+- git add sitemap.xml index.html javascripts bower_components CNAME -f
 - git add gist rss.xml
 - git commit -am 'publi:ship:'
 - git push blogist master -f -q
