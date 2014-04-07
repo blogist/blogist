@@ -55,7 +55,8 @@ exports.template = function(grunt, init, done) {
 		init.prompt('homepage'),
 		init.prompt("theme", "lumen"),
 		init.prompt("ghpage_repo"),
-		init.prompt("branch", "master")
+		init.prompt("branch", "master"),
+		init.prompt("google_analystic")
 	], config);
 }
 	

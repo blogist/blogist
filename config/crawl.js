@@ -14,7 +14,7 @@ var stripScriptTags = function(html) {
 
 var feed = new RSS({
   title: "Jichao Ouyang's Blogist",
-  description: "<img src=https://travis-ci.org/jcouyang/jcouyang.github.com.svg> or failed",
+  description: "{{description}}",
   feed_url: '{{homepage}}/rss.xml',
   site_url: '{{homepage}}',
   image_url:'{{homepage}}/favicon.png',
