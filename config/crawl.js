@@ -43,7 +43,7 @@ var crawlPage = function(idx, arr) {
 		var gist = arr[idx];
 		var postfix,title;
 		if (gist.description){
-			postfix = gist.description + "/index.html";
+			postfix = gist.description.replace(/ +/g,'-') + "/index.html";
 			title=gist.description;
 		}
 		else{

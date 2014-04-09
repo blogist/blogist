@@ -26,7 +26,7 @@ router.get("/", function(){
 });
 
 var blogDetailOf = function(gistid){
-	return new BlogDetailView({model:new blogdetailModel(gistid,'get@https://gist.github.com/'+username+'/'+ gistid +".json")}).render();
+	return new BlogDetailView({model:new blogdetailModel(gistid,'get@https://gist.github.com/'+username+'/'+ gistid +".json")}).render({disqus_name:$('meta[name=disqus_name]').attr('content')});
 };
 
 router.get("/gist/:gistid/?",function(params,data){
