@@ -6,7 +6,7 @@
 
 #+END_SRC
 
-[[https://travis-ci.org/blogist/blogist.svg][Build Status]]
+[[https://travis-ci.org/blogist/blogist.svg]]
 
 ** 3 mins setup (assuming you are familiar with github, heroku and travis)
 
