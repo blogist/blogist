@@ -1,8 +1,8 @@
-token= git config github.oauth-token
-if [-n $token]
+token=$(git config github.oauth-token)
+if [ -z $token ]
 then
 		echo "geting the token from github"
-		token=curl -u '{{username}}' -d '{"scopes":["gist"], "note":"blogist"}' https://api.github.com/authorizations | grep -Pom 1 '"access_token": "\K[^"]*'
+		token=$(curl -u '{{username}}' -d '{"scopes":["gist"], "note":"blogist"}' https://api.github.com/authorizations | grep -Pom 1 '"access_token": "\K[^"]*')
 fi
 gem install travis
 travis encrypt GH_TOKEN=$token --add
