@@ -11,46 +11,39 @@
 ** 3 mins setup (assuming you are familiar with github, heroku and travis)
 
 *** 1st min: config your own blogist
-- fork [[https://github.com/blogist/blogist][blogist]] then clone
+**** 1. fork [[https://github.com/blogist/blogist][blogist]] then clone
   #+BEGIN_SRC sh
     git clone https://github.com/<github username>/blogist.git
     cd blogist
   #+END_SRC
 
-- follow the first step [[https://pages.github.com][here.]] and copy your github page [repo url], copy the https one, not ssh
+**** 2. follow the first step [[https://pages.github.com][here.]] and copy your github page [repo url], copy the https one, not ssh
 
-- config blogist
+**** 3. config blogist
 #+BEGIN_SRC sh
-npm install
-npm install grunt-init grunt-cli -g
-bower install
-grunt-init config
+sh install.sh
 #+END_SRC
 
 then you will get prompt about how to setup your blogist
 
 you'll have to input  the following:(* required)
-- 'github_name*': your github username
-- 'homepage*': your blog url, with 'https?:\\'
-- 'repo*': [repo url] you copy before
-- 'author_name': optional, by default your git config user.name
-- 'blog_title': title of your blog
-- 'description':description of your blog
-- "theme": choose your blog theme, by default lumen, or anythin you like here http://bootswatch.com/
-- 'branch': default master, or gh-pages if you like.
+- github_name*: your github username
+- homepage*: your blog url, with "https?:\\\"
+- ghpage_repo*: [repo url] you copy before
+- author_name: optional, by default your git config user.name
+- blog_title: title of your blog
+- description:description of your blog
+- theme": choose your blog theme, by default lumen, or anythin you like here http://bootswatch.com/
+- branch: default master, or gh-pages if you like.
+- disqus_name: disqus short name
+- google_analytics: google analytics code
 
+after you complete the config, a settings.json will be generated.
+if you want to change the settings later, just modify this file.
+
+if anything wrong, you may take my [[https://github.com/jcouyang/blogist/blob/master/config/settings.json][settings]] for example.
 
 *** 2nd min: push your blogist
-**** run grunt task
-#+BEGIN_SRC sh
-grunt
-python -m SimpleHTTPServer
-#+END_SRC
-
-open [[http://localhost:8000]] in your browser make sure you see your gist lists.
-
-if ok =CTRL C=
-
 **** Setup CI
 - open https://travis-ci.org/profile and find your repo
 
@@ -67,11 +60,12 @@ wait for a while
 **** push to github page
 
 #+BEGIN_SRC sh
-git remote add blogist [repo url]
 git add config/settings.json
 git commit -am "init config"
-git push blogist master
+git push origin master
 #+END_SRC
+
+then wait for the ci pass.
 
 *** 3rd min: SEO
 - go to the your repo's travis

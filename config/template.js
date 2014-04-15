@@ -1,15 +1,10 @@
 'use strict';
 var nunjucks = require('nunjucks');
 // Basic template description.
-exports.description = 'Scaffolds a new project with GruntJS, SASS, MODX and optionally SUSY.';
+exports.description = 'this will config your blogist';
 
 // Template-specific notes to be displayed after question prompts.
-exports.after = 'You should now install project dependencies with _npm ' +
-	'install_. After that, you may execute project tasks with _grunt_. For ' +
-	'more information about installing and configuring Grunt, please see ' +
-	'the Getting Started guide:' +
-	'\n\n' +
-	'http://gruntjs.com/getting-started';
+exports.after = 'run "python -m SimpleHTTPServer" and check if http://localhost:8000 is ok';
 
 // Any existing file or directory matching this wildcard will cause a warning.
 // exports.warnOn = '*';
@@ -28,12 +23,14 @@ exports.template = function(grunt, init, done) {
 		var gruntfile = nunjucks.render("config/Gruntfile.js",props);
 		var index = nunjucks.render("config/index.html",props);
 		var crawl = nunjucks.render("config/crawl.js",props);
+		var configtravis = nunjucks.render("config/configtravis.sh",props);
 
 		// init.writePackageJSON('Gruntfile.js',gruntfile);
 		grunt.file.write(".travis.yml",travis);
 		grunt.file.write("Gruntfile.js",gruntfile);
 		grunt.file.write("index.html",index);
 		grunt.file.write("crawl.js",crawl);
+		grunt.file.write("configtravis.sh",configtravis);
 
 		// All done!
 		grunt.file.write(settingsPath, JSON.stringify(props,null,2));
