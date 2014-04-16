@@ -8,6 +8,7 @@
   "theme": "lumen",
   "ghpage_repo": "https://github.com/jcouyang/jcouyang.github.com.git",
   "branch": "master",
-  "google_analystic": "UA-32314154-1",
+		"google_analystic": "UA-32314154-1",
+		"disqus_name": "jcoysblog",
   "settings": true
 }
