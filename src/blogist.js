@@ -4,7 +4,7 @@ if(window.location.pathname!="/"){
 
 var username = $("meta[name=username]").attr("content");
 
-var bloglistModel = new Model("bloglist","get@https://api.github.com/users/jcouyang/gists");
+var bloglistModel = new Model("bloglist",'get@https://api.github.com/users/'+username+'/gists');
 
 var blogdetailModel = Model.extend({
 	dataOptions:{dataType:"jsonp"}

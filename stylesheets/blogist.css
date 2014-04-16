@@ -9,3 +9,9 @@ h1.page-header {
 .gist .gist-file {
 		border-width:0;
 }
+
+.gist .gist-file .gist-meta {
+    background-color: none;
+    background-image: none;
+    background-repeat: none;
+}
