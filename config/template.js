@@ -53,6 +53,7 @@ exports.template = function(grunt, init, done) {
 		init.prompt("theme", "lumen"),
 		init.prompt("ghpage_repo"),
 		init.prompt("branch", "master"),
+		init.prompt("disqus_name"),
 		init.prompt("google_analystic")
 	], config);
 }
