@@ -1,8 +1,8 @@
 language: node_js
 before_install:
-    - phantomjs --version
-    - npm install -g grunt-cli grunt-init bower
-    - bower install
+- phantomjs --version
+- npm install -g grunt-cli grunt-init bower
+- bower install
 branches:
   only:
   - master
@@ -12,14 +12,10 @@ before_script:
 - git config --global user.name "Jichao Ouyang"
 - git config --global user.email "oyanglulu@gmail.com"
 - export REPO_URL="https://$GH_TOKEN@github.com/jcouyang/jcouyang.github.com.git"
-
 script:
-    
-    - grunt-init config
-    
-    - npm test
+- grunt-init config
+- npm test
 after_success:
-
 - node crawl
 - grunt sitemap
 - git remote add blogist $REPO_URL
@@ -30,4 +26,6 @@ after_success:
 - git add gist rss.xml -f
 - git commit -am 'publi:ship:'
 - git push blogist master -f -q
-
+env:
+  global:
+    secure: O4oVTBnTuMk+5DnECsXK7Jv1ZGuqNIHQ5omiESnOK2ARqAn/1IAzMDVDzC5Rlj5MrODIZEQ5xyBLYXwgFax71A2jgda7xHHxRVLtnqKNoO7TIKg/zauNudh5DIEKX7dfwRC3NLfQUXVTsiKPyi9EiV6jtcaYwuWg8GwQZFo65Bw=
