@@ -6,8 +6,8 @@
   "directories": {
     "test": "tests"
   },
-		"scripts": {
-			"test": "grunt deploy"
+  "scripts": {
+    "test": "grunt deploy"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/blogist/blogist/issues"
   },
-		"homepage": "https://blogist.github.com",
+  "homepage": "https://blogist.github.com",
   "devDependencies": {
     "mocha": "~1.17.1",
     "grunt-mocha": "~0.4.10",
@@ -39,8 +39,8 @@
     "grunt-contrib-uglify": "~0.3.2",
     "requirejs": "~2.1.11",
     "phantom": "~0.5.7",
-    "zombie": "~2.0.0-alpha31",
     "grunt-sitemap": "~1.1.0",
-    "rss": "^0.3.2"
+    "rss": "^0.3.2",
+    "underscore": "^1.6.0"
   }
 }

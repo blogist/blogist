@@ -1,10 +1,11 @@
-var Browser = require('zombie'),
-    url     = require('url'),
+var nunjucks = require('nunjucks'),
+url     = require('url'),
     fs      = require('fs'),
     saveDir = __dirname,
 		p = require("path"),
 		RSS = require('rss'),
-		mkdirp = require("mkdirp");
+		mkdirp = require("mkdirp"),
+_ = require("underscore");
 var https = require('https');
 
 var feed = new RSS({
@@ -33,8 +34,8 @@ var saveSnapshot = function(uri, body) {
 	fs.writeFileSync(p.resolve(filename), body);
 	console.log("save",filename);
 };
-Browser.debug = true;
-var browser = new Browser(browserOpts);
+
+var settings = fs.readFileSync("./config/settings.json");
 var crawlPage = function(idx, arr) {
 	var gist = arr[idx];
 	var postfix,title;
@@ -51,21 +52,26 @@ var crawlPage = function(idx, arr) {
 	}
   var uri = "{{homepage}}/#/gist/" +  gist.id + "/" + gist.description;
 	console.log(uri);
-	browser.open();
-  browser.visit(uri)
-		.then(function() {
-			// console.log(html);
+		https.get({host:"gist.github.com",path:"/{{github_name}}/"+gist.id+".json"}, function(res) {
+		res.setEncoding('utf8');
+		var data = "";
+		res.on('data', function (chunk) {
+			data +=chunk;
+		});
+
+		res.on('end',function(){
+
 			var url= "{{homepage}}/gist/" + gist.id + "/" + postfix; // link to the item
-			
+			var gistjson = _(JSON.parse(data)).extend(JSON.parse(settings.toString()));
+			var html = nunjucks.render("src/templates/crawl.html", {data:gistjson});
 			feed.item({
 				title: title,
-				description: browser.html("article"),
+				description: gistjson.div,
 				url: url, // link to the item
-				author: gist.owner, // optional - defaults to feed author property
-				date: gist.created_at // any format that js Date can parse.
+				author: gistjson.owner, // optional - defaults to feed author property
+				date: gistjson.created_at // any format that js Date can parse.
 			});
-			saveSnapshot(url, browser.html());
-			browser.close();
+			saveSnapshot(url, html);
 			if(idx+1 === arr.length){
 				var xml = feed.xml();
 				fs.writeFileSync("rss.xml",xml);
@@ -74,7 +80,12 @@ var crawlPage = function(idx, arr) {
 				console.log("crawl",idx);
 				crawlPage(idx+1, arr);							
 			}
+
 		});
+	}).on('error', function(e) {
+		console.error(e);
+	});
+
 };
 
 console.log("start snapping");
