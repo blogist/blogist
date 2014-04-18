@@ -6,11 +6,6 @@ var Browser = require('zombie'),
 		RSS = require('rss'),
 		mkdirp = require("mkdirp");
 var https = require('https');
-var scriptTagRegex = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
-
-var stripScriptTags = function(html) {
-  return html.replace(scriptTagRegex, '');
-}
 
 var feed = new RSS({
   title: "Jichao Ouyang's Blogist",
