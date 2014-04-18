@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       dist: {
         siteRoot: './',
 				pattern:'/gist/**/*.html',
-				homepage:"http://0.0.0.0:8000"
+				homepage:"http://oyanglul.us"
       }
     }
 	});
