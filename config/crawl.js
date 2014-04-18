@@ -33,6 +33,7 @@ var saveSnapshot = function(uri, body) {
 	fs.writeFileSync(p.resolve(filename), body);
 	console.log("save",filename);
 };
+Browser.debug = true;
 var browser = new Browser(browserOpts);
 var crawlPage = function(idx, arr) {
 	var gist = arr[idx];
