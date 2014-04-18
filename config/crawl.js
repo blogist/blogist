@@ -24,7 +24,7 @@ var browserOpts = {
   runScripts: true
 };
 var saveSnapshot = function(uri, body) {
- 
+	
   var path = url.parse(uri).pathname;
 
   var filename = saveDir + path;
@@ -33,47 +33,47 @@ var saveSnapshot = function(uri, body) {
 	fs.writeFileSync(p.resolve(filename), body);
 	console.log("save",filename);
 };
-
+var browser = new Browser(browserOpts);
 var crawlPage = function(idx, arr) {
-		var gist = arr[idx];
-		var postfix,title;
-		if (gist.description){
-			postfix = gist.description.replace(/ +/g,'-') + "/index.html";
-			title=gist.description;
+	var gist = arr[idx];
+	var postfix,title;
+	if (gist.description){
+		postfix = gist.description.replace(/ +/g,'-') + "/index.html";
+		title=gist.description;
+	}
+	else{
+		postfix= "index.html";
+		for (var f in gist.files){
+			title=f;
+			break;
 		}
-		else{
-			postfix= "index.html";
-			for (var f in gist.files){
-				title=f;
-				break;
-			}
-		}
-    var uri = "{{homepage}}/#/gist/" +  gist.id + "/" + gist.description;
-		console.log(uri);
-    var browser = new Browser(browserOpts);
-    var promise = browser.visit(uri)
-					.then(function() {
-						// console.log(html);
-						var url= "{{homepage}}/gist/" + gist.id + "/" + postfix; // link to the item
-						
-						feed.item({
-							title: title,
-							description: browser.html("article"),
-							url: url, // link to the item
-							author: gist.owner, // optional - defaults to feed author property
-							date: gist.created_at // any format that js Date can parse.
-						});
-						saveSnapshot(url, browser.html());
-						if(idx+1 === arr.length){
-							console.log("DONE");
-							var xml = feed.xml();
-							fs.writeFileSync("rss.xml",xml);
-						}else{
-							console.log("crawl",idx);
-							crawlPage(idx+1, arr);							
-						}
-
+	}
+  var uri = "{{homepage}}/#/gist/" +  gist.id + "/" + gist.description;
+	console.log(uri);
+	// browser.open();
+  var promise = browser.visit(uri)
+				.then(function() {
+					// console.log(html);
+					var url= "{{homepage}}/gist/" + gist.id + "/" + postfix; // link to the item
+					
+					feed.item({
+						title: title,
+						description: browser.html("article"),
+						url: url, // link to the item
+						author: gist.owner, // optional - defaults to feed author property
+						date: gist.created_at // any format that js Date can parse.
 					});
+					saveSnapshot(url, browser.html());
+					if(idx+1 === arr.length){
+						var xml = feed.xml();
+						fs.writeFileSync("rss.xml",xml);
+						console.log("DONE");
+					}else{
+						console.log("crawl",idx);
+						crawlPage(idx+1, arr);							
+					}
+
+				});
 };
 
 console.log("start snapping");
@@ -92,5 +92,5 @@ https.get({host:"api.github.com",path:"/users/{{github_name}}/gists","headers": 
 }).on('error', function(e) {
   console.error(e);
 });
-												
+
 
