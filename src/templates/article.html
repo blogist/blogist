@@ -16,7 +16,7 @@
   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 	dsq.id = 'disqus'
-	oldDisqus = document.getElementById('disqus')
+	oldDisqus = $('#disqus')
 	if (oldDisqus) oldDisqus.remove();
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
