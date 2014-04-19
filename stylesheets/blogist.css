@@ -1,17 +1,7 @@
 h1.page-header {
 		text-align:center;
 }
-.gist .gist-file .gist-data {
-    background-color: white;
-		
-}
 
 .gist .gist-file {
 		border-width:0;
-}
-
-.gist .gist-file .gist-meta {
-    background-color: none;
-    background-image: none;
-    background-repeat: none;
 }
