@@ -1,12 +1,13 @@
 {
   "name": "blogist",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "blog with gist",
   "main": "index.html",
   "directories": {
     "test": "tests"
   },
-  "scripts": {
+	"scripts": {
+		"start": "./install.sh",
     "test": "grunt deploy"
   },
   "repository": {
@@ -15,7 +16,8 @@
   },
   "keywords": [
     "blog",
-    "gist"
+			"gist",
+			"blogist"
   ],
   "author": "Jichao Ouyang",
   "license": "MIT",
