@@ -23,7 +23,7 @@ after_success:
 - git rm .travis.yml -f
 - git add sitemap.xml index.html javascripts bower_components -f
 - git add CNAME
-- git add gist rss.xml -f
+- git add gist atom.xml -f
 - git commit -am 'publi:ship:'
 - git push blogist master -f -q
 env:

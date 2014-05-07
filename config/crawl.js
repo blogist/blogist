@@ -11,7 +11,7 @@ var https = require('https');
 var feed = new RSS({
   title: "Jichao Ouyang's Blogist",
   description: "{{description}}",
-  feed_url: '{{homepage}}/rss.xml',
+  feed_url: '{{homepage}}/atom.xml',
   site_url: '{{homepage}}',
   image_url:'{{homepage}}/favicon.png',
   author: 'Jichao Ouyang',
@@ -74,7 +74,7 @@ var crawlPage = function(idx, arr) {
 			saveSnapshot(url, html);
 			if(idx+1 === arr.length){
 				var xml = feed.xml();
-				fs.writeFileSync("rss.xml",xml);
+				fs.writeFileSync("atom.xml",xml);
 				console.log("DONE");
 			}else{
 				console.log("crawl",idx);
