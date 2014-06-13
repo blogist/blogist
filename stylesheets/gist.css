@@ -31,11 +31,6 @@
 	overflow:hidden;
 	color:#999;
 	padding:10px;
-	background-color:#e8e8e8;
-	background-image:-webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#e8e8e8));
-	background-image:-webkit-linear-gradient(#fafafa, #e8e8e8);
-	background-image:linear-gradient(#fafafa, #e8e8e8);
-	background-repeat:repeat-x
 }
 
 .gist .gist-file .gist-meta a{
@@ -47,8 +42,6 @@
 .gist .gist-file .gist-data{
 	overflow:auto;
 	word-wrap:normal;
-	background-color:#f8f8ff;
-	border-bottom:1px solid #ddd;
 	font-size:100%
 }
 
