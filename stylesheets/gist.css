@@ -1,4 +1,6 @@
-
+article span.octicon.octicon-link {
+		display:none;
+}
 .gist .render-container .render-viewer-error,.gist .render-container .render-viewer-fatal,.gist .render-container .octospinner{
 	display:none
 }
