@@ -1,3 +1,6 @@
+env:
+  global:
+    secure: O4oVTBnTuMk+5DnECsXK7Jv1ZGuqNIHQ5omiESnOK2ARqAn/1IAzMDVDzC5Rlj5MrODIZEQ5xyBLYXwgFax71A2jgda7xHHxRVLtnqKNoO7TIKg/zauNudh5DIEKX7dfwRC3NLfQUXVTsiKPyi9EiV6jtcaYwuWg8GwQZFo65Bw=
 language: node_js
 before_install:
 - phantomjs --version
@@ -11,7 +14,7 @@ node_js:
 before_script:
 - git config --global user.name "Jichao Ouyang"
 - git config --global user.email "oyanglulu@gmail.com"
-- export REPO_URL="https://$GH_TOKEN@github.com/jcouyang/jcouyang.github.com.git"
+- export REPO_URL="https://${GH_TOKEN}@github.com/jcouyang/jcouyang.github.com.git"
 script:
 - grunt-init config
 - npm test
@@ -23,8 +26,6 @@ after_success:
 - git rm .travis.yml -f
 - git add sitemap.xml index.html javascripts bower_components -f
 - git add CNAME
-- git add gist atom.xml -f
+- git add gist rss.xml -f
 - git commit -am 'publi:ship:'
 - git push blogist master -f -q
-GH_TOKEN:
-  secure: Z86N7va4Ajt8inFehpwiuLH511Q05cjIdQbefuG9F2HzIfJ5k7mE9iOran4/B57l2PJVrPT9osnGtn/ZHyPlsfbNJDVncj8dI9lsFv1oCoezK29W2viyPRmkVa+GcfXO6wjkzIQ+nHUq0qDQS+Ocpe05LyUeT2xeFQcYG7yhWkU=
