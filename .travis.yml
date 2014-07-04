@@ -1,17 +1,13 @@
 language: node_js
 before_install:
-- phantomjs --version
-- npm install -g grunt-cli grunt-init bower
-- bower install
+    - phantomjs --version
+    - npm install -g grunt-cli grunt-init bower
+    - bower install
 branches:
   only:
   - master
 node_js:
 - '0.10'
-before_script:
-- git config --global user.name "Jichao Ouyang"
-- git config --global user.email "oyanglulu@gmail.com"
-- export REPO_URL="https://$GH_TOKEN@github.com/jcouyang/jcouyang.github.com.git"
 script:
 - grunt-init config
 - npm test
