@@ -8,12 +8,10 @@ branches:
   - master
 node_js:
 - '0.10'
-before_script:
+script:
 - git config --global user.name "Jichao Ouyang"
 - git config --global user.email "oyanglulu@gmail.com"
 - export REPO_URL="https://$GH_TOKEN@github.com/jcouyang/jcouyang.github.com.git"
-script:
-- grunt-init config
 - npm test
 after_success:
 - node crawl
@@ -28,4 +26,4 @@ after_success:
 - git push blogist master -f -q
 env:
   global:
-    secure: Whl1uX9FO2U4VCRITPb3embJ2ZFzpFrpy0f8TWbkMfAYlQDjSto7crUr060FNzcT/V4QGopaOW0vqlNGVH9NBaL1eIP6tM0I2iE9zCZfUSbL9XOzfyV+nWa5ebUe+GCpCMU92K3u1Wv5odcWNPwFbOX+ajfAcUCrY3Yxbq5I3cA=
+  - secure: HTJbxElZp+ff0oGdEDu7Fz14tt3Gstje+MGTw3/HRTI5+24HaRHsZx5uVlIM+JZwdDBGwtAPJ1It36pJaFuEqLFVb/yAeuTqjGdFUtpueUT/7YAHtPaFwmKr3yDmPAVT+69PCvqjqqeg9ZCZEZInPlSZM/ouQBbCJNsxVAYrvKw=
