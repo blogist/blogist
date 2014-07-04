@@ -14,10 +14,10 @@ before_script:
 - export REPO_URL="https://$GH_TOKEN@{{ghpage_repo|replace("https://", "")}}"
 
 script:
-    {% if settings %}
-    - grunt-init config
-    {% endif %}
-    - npm test
+{% if not settings %}
+- grunt-init config
+{% endif %}
+- npm test
 after_success:
 {% if settings %}
 - node crawl
