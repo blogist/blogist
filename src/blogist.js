@@ -21,10 +21,10 @@ var BloglistView = View.extend({
 	template:"src/templates/gistlist.html"
 });
 
-var bloglist = new BloglistView();
-
 var router = new Router();
+
 router.get("/", function(){
+	var bloglist = new BloglistView();
 	bloglist.render();
 });
 
