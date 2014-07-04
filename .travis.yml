@@ -28,4 +28,4 @@ after_success:
 - git push blogist master -f -q
 env:
   global:
-    secure: oVqQ5PNE6fYw1cTctouo7dmitXK42Yr17gramlv4earVYtCXVpBNpdGjj1KzCcrPTddsx2lGbdJxmMzuEV/Vx1KUzD0m4OPDQdDyT0HNKIgDej3d7bu17/AmfMOMXKpfd/gmIhFJ+pKXMF2QYXrCL4MR4donrW483BZjtNE8I1Y=
+    secure: Whl1uX9FO2U4VCRITPb3embJ2ZFzpFrpy0f8TWbkMfAYlQDjSto7crUr060FNzcT/V4QGopaOW0vqlNGVH9NBaL1eIP6tM0I2iE9zCZfUSbL9XOzfyV+nWa5ebUe+GCpCMU92K3u1Wv5odcWNPwFbOX+ajfAcUCrY3Yxbq5I3cA=
