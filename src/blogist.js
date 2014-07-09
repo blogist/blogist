@@ -26,10 +26,22 @@ var router = new Router();
 router.get("/", function(){
 	var bloglist = new BloglistView();
 	bloglist.render();
+	$('#disqus_thread').remove();
 });
 
+var loadDisqus = function(){
+	if(!$('#disqus_thread').length)
+		$(".container .blogist").append($("<div id='disqus_thread'></div>"));
+	disqus_identifier = window.location.hash.replace('#','');
+	disqus_url = window.location.href.replace('/#','');
+	disqus_title = "{{data.description}}"|| $('.gist-meta a').eq(1).text() || document.title;
+	DISQUS.reset({reload:true});
+};
 var blogDetailOf = function(gistid){
-	return new BlogDetailView({model:new blogdetailModel(gistid,'get@https://gist.github.com/'+username+'/'+ gistid +".json")}).render({disqus_name:$('meta[name=disqus_name]').attr('content')});
+	var model = new blogdetailModel(gistid,'get@https://gist.github.com/'+username+'/'+ gistid +".json");
+	var view = new BlogDetailView({model:model});
+	view.render({disqus_name:$('meta[name=disqus_name]').attr('content')});
+	loadDisqus();
 };
 
 router.get("/gist/:gistid/?",function(params,data){
