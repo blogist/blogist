@@ -6,7 +6,7 @@
 
 #+END_SRC
 
-[[https://travis-ci.org/blogist/blogist.svg]]
+[[https://travis-ci.org/jcouyang/blogist.svg]]
 
 ** 3 mins setup (assuming you are familiar with github, heroku and travis)
 
@@ -41,7 +41,10 @@ you'll have to input  the following:(* required)
 after you complete the config, a settings.json will be generated.
 if you want to change the settings later, just modify this file.
 
-if anything wrong, you may take my [[https://github.com/jcouyang/blogist/blob/master/config/settings.json][settings]] for example.
+#+BEGIN_QUOTE
+alternatively, you may copy my [[https://github.com/jcouyang/blogist/blob/master/config/settings.json][settings]].json file change things to yours, and put it in config/. then run `sh install.sh`
+#+END_QUOTE
+
 
 *** 2nd min: configure travis ci (if you don't need SEO, skip this, you'r DONE!)
 **** 2.1 Setup CI
