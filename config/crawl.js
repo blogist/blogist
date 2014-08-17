@@ -3,21 +3,9 @@ url     = require('url'),
     fs      = require('fs'),
     saveDir = __dirname,
 		p = require("path"),
-		RSS = require('rss'),
 		mkdirp = require("mkdirp"),
 _ = require("underscore");
 var https = require('https');
-
-var feed = new RSS({
-  title: "Jichao Ouyang's Blogist",
-  description: "{{description}}",
-  feed_url: '{{homepage}}/atom.xml',
-  site_url: '{{homepage}}',
-  image_url:'{{homepage}}/favicon.png',
-  author: 'Jichao Ouyang',
-  language: 'en',
-  ttl: '60'
-});
 
 var browserOpts = {
   waitFor: 5000,
@@ -64,17 +52,8 @@ var crawlPage = function(idx, arr) {
 			var url= "{{homepage}}/gist/" + gist.id + "/" + postfix; // link to the item
 			var gistjson = _(JSON.parse(data)).extend(JSON.parse(settings.toString()));
 			var html = nunjucks.render("src/templates/crawl.html", {data:gistjson});
-			feed.item({
-				title: title,
-				description: gistjson.div,
-				url: url, // link to the item
-				author: gistjson.owner, // optional - defaults to feed author property
-				date: gistjson.created_at // any format that js Date can parse.
-			});
 			saveSnapshot(url, html);
 			if(idx+1 === arr.length){
-				var xml = feed.xml();
-				fs.writeFileSync("atom.xml",xml);
 				console.log("DONE");
 			}else{
 				console.log("crawl",idx);

@@ -1,6 +1,6 @@
 {
   "name": "blogist",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "blog with gist",
   "main": "index.html",
   "directories": {

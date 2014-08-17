@@ -46,7 +46,7 @@ alternatively, you may copy my [[https://github.com/jcouyang/blogist/blob/master
 #+END_QUOTE
 
 
-*** 2nd min: configure travis ci (if you don't need SEO, skip this, you'r DONE!)
+*** 2nd min: configure travis ci (if you don't need SEO because gist already does that for you, skip this, you'r DONE!)
 **** 2.1 Setup CI
 open https://travis-ci.org/profile and find your repo
 
