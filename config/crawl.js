@@ -68,6 +68,17 @@ var crawlPage = function(idx, arr) {
 };
 
 console.log("start snapping");
+https.get({host:"gist.github.com",path:"/{{github_name}}.atom","headers": {'User-Agent':"Mozilla/5.0"}}, function(res) {
+	res.setEncoding('utf8');
+	var data = "";
+  res.on('data', function (chunk) {
+		data +=chunk;
+  });
+	res.on('end',function(){
+		fs.writeFileSync('atom.xml', data);
+	});
+	
+});
 
 https.get({host:"api.github.com",path:"/users/{{github_name}}/gists","headers": {'User-Agent':"Mozilla/5.0","Content-Type":	"application/json"}}, function(res) {
 	res.setEncoding('utf8');
