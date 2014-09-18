@@ -11,13 +11,13 @@ var blogdetailModel = Model.extend({
 });
 
 var BlogDetailView = View.extend({
-	el:$(".container .article"),
+	el:$("#blogist"),
 	template:"src/templates/article.html"
 });
 
 var BloglistView = View.extend({
 	model:bloglistModel,
-	el: $(".container .article"),
+	el: $("#blogist"),
 	template:"src/templates/gistlist.html"
 });
 

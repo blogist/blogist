@@ -12,7 +12,7 @@ article span.octicon.octicon-link {
 .gist pre{
 	font:inherit;
 	line-height:inherit;
-	white-space:pre
+	white-space:pre;
 }
 
 .gist .gist-file{

@@ -7,8 +7,9 @@
 		<meta name="username" content="{{github_name}}">
 		<meta name="description" content="{{description}}">
 		<meta name="disqus_name" content="{{disqus_name}}">
-    <link rel="stylesheet" href="/bower_components/bootswatch/{{theme}}/bootstrap.min.css" media="screen">
 		<link rel="stylesheet" href="/stylesheets/gist.css" media="screen">
+ 		<link rel="stylesheet" href="/bower_components/bootswatch/{{theme}}/bootstrap.min.css" media="screen">
+	
 		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
 		<link rel="stylesheet" href="/stylesheets/octicons/octicons.css" media="screen" />
 		<script src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -26,26 +27,33 @@
 		
   </head>
   <body>
-		<div class="container">
-
 			<h1 class="page-header">
 				<a href="/#/">{{blog_title}}</a> <a href="https://gist.github.com/{{github_name}}.atom"><span class="mega-octicon octicon-bookmark" style="cursor:pointer;min-width: 32px; color:orange"></span></a>
 				<p class="lead">{{description}}</p>
-			</h1>					
-			<div class="row">
-				<div class="sidebar col-md-2">
-				</div>
-
-				<div class="col-md-8 blogist">
-
-					<div class="article">
-						<img src="stylesheets/img/loading-cubes.svg" class="center-block">
-					</div>
-				</div>
-				<div class="sidebar col-md-2">
-				</div>
-			</div>	
-		</div>
+			</h1>	
+			<nav id="overlord" class="">
+			  <figure id="logo_top" class="">
+			    <a href="/">Blogist</a>
+			  </figure>
+			  <figure id="hamburger">
+			    <a href="#menu" id="hamburger_button">Menu</a>
+			  </figure>
+			  <ul id="dropdown" class="onblog">
+			    <li class="dropdown_message">
+			     <a href="https://svbtle.com">Peter Sobot is writing on the <span class="logoize">Svbtle</span> network.</a>
+			    </li>
+			    <li><a href="https://twitter.com/psobot">@psobot</a></li>
+			    <li><a href="http://petersobot.com" target="_blank">petersobot.com</a></li>
+			    <li><a href="mailto:hello@petersobot.com?subject=hi%20from%20svbtle">say&nbsp;hello</a></li>
+			    <li><a href="/feed">rss feed</a></li>
+			    <li style="margin: 0; padding: 0;"><hr class="overlord_nav"></li>
+			    <li><a href="https://svbtle.com/about">about svbtle</a></li>
+			    <li><a href="https://svbtle.com/signup">sign up</a></li>
+			  </ul>
+			</nav>				
+			<div id="blogist" class="blogist">
+				<img src="stylesheets/img/loading-cubes.svg" class="center-block">
+			</div>
 
 		<footer>
       <div class="container">
