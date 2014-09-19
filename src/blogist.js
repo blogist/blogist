@@ -11,13 +11,13 @@ var blogdetailModel = Model.extend({
 });
 
 var BlogDetailView = View.extend({
-	el:$(".container .article"),
+	el:$("#blogist"),
 	template:"src/templates/article.html"
 });
 
 var BloglistView = View.extend({
 	model:bloglistModel,
-	el: $(".container .article"),
+	el: $("#blogist"),
 	template:"src/templates/gistlist.html"
 });
 
@@ -50,4 +50,10 @@ router.get("/gist/:gistid/?",function(params,data){
 
 router.get("/gist/:gistid/.+",function(params,data){
 	blogDetailOf(params.gistid);
+});
+
+$('#overlord').hover(function(){
+	$(this).addClass('overlord_active');
+},function(){
+	$(this).removeClass('overlord_active');
 });
