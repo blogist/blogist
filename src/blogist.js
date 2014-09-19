@@ -51,3 +51,9 @@ router.get("/gist/:gistid/?",function(params,data){
 router.get("/gist/:gistid/.+",function(params,data){
 	blogDetailOf(params.gistid);
 });
+
+$('#overlord').hover(function(){
+	$(this).addClass('overlord_active');
+},function(){
+	$(this).removeClass('overlord_active');
+});
