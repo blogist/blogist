@@ -15,7 +15,7 @@ h1.page-header {
 	margin: auto;
 }
 
-.blogist table, .blogist .table, .blogist h2, article pre, article h1, article h2, article h3, article h4, article h5, article h6, article p, article ol, article ul, article table, article blockquote {
+.blogist .pager, .blogist .metadata, .blogist table, .blogist .table, .blogist h2, article pre, article h1, article h2, article h3, article h4, article h5, article h6, article p, article ol, article ul, article table, article blockquote {
 	max-width: 600px;
 	margin: 15px auto;
 }
@@ -25,8 +25,8 @@ article .highlight {
 	border: 1px solid #CCC;
 }
 
-article pre {
-	background-color: none;
+.blogist pre {
+	background-color:inherit;
 	border: none;
 }
 
@@ -190,4 +190,41 @@ nav#overlord ul#dropdown li.dropdown_message a span {
 nav#overlord ul#dropdown li a:hover {
     color: #000;
     font-weight: 500;
+}
+
+.file-data .line-numbers {
+    border-right: 1px solid #EEE;
+    color: #AAA;
+    font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: right;
+    min-width: 27px;
+    padding: 12px 6px;
+    box-sizing: border-box;
+    -moz-user-select: none;
+}
+
+.file-data .line-numbers span {
+    color: #AAA;
+    cursor: pointer;
+    display: block;
+}
+
+.file-data pre, .line-data {
+    font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+    font-size: 12px;
+    width: 100%;
+}
+
+.file-data pre, .line-data {
+    font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+    font-size: 12px;
+    width: 100%;
+}
+
+time {
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    color: #9A9A9A;
 }
