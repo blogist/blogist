@@ -1,6 +1,6 @@
 #+BEGIN_SRC 
      ____ ____ ____ ____ ____ ____ ____
-    ||B |||L |||O |||G |||I |||S |||T ||
+    ||B |||L |||O |||G |||I |||S |||T || 2.0
     ||__|||__|||__|||__|||__|||__|||__||
     |/__\|/__\|/__\|/__\|/__\|/__\|/__\|
 
@@ -33,10 +33,11 @@ you'll have to input  the following:(* required)
 - *author_name*: optional, by default your git config user.name
 - *blog_title*: title of your blog
 - *description*:description of your blog
-- *theme*: choose your blog theme, by default lumen, or anythin you like from here http://bootswatch.com/
+- *theme*: choose your blog theme, by default flatly, or anythin you like from here http://bootswatch.com/
 - *branch*: default master, or gh-pages if you like.
 - *disqus_name*: disqus short name
 - *google_analytics*: google analytics code
+- *about_gist*: the gist hash of your about page
 
 after you complete the config, a settings.json will be generated.
 if you want to change the settings later, just modify this file.
