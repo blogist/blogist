@@ -31,11 +31,17 @@ var BloglistView = View.extend({
 });
 
 var router = new Router();
-
+var bloglist;
 router.get("/", function(){
-	var bloglist = new BloglistView();
+	loading()
+	bloglist = new BloglistView();
 	bloglist.render({page:1});
 	$('#disqus_thread').remove();
+});
+
+router.get("/page/:number", function(params){
+	loading();
+	bloglist.render({page:params.number});
 });
 
 var loadDisqus = function(){
@@ -55,10 +61,12 @@ var blogDetailOf = function(gistid){
 };
 
 router.get("/gist/:gistid/?",function(params,data){
+	loading();
 	blogDetailOf(params.gistid);
 });
 
 router.get("/gist/:gistid/.+",function(params,data){
+	loading();
 	blogDetailOf(params.gistid);
 });
 
@@ -67,6 +75,10 @@ $('#overlord').hover(function(){
 },function(){
 	$(this).removeClass('overlord_active');
 });
+
+var loading = function(){
+	$('#blogist').html('<img src="stylesheets/img/loading-cubes.svg" class="center-block">');
+};
 
 
 
