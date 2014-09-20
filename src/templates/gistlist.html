@@ -16,8 +16,8 @@
 		<hr/>
 		{% endfor %}
 		<ul class="pager">
-      <li class="previous {{"disabled" if loop.first}}"><a href="#/page/{{loop.index-1}}">← Older</a></li>
-      <li class="next {{"disabled" if loop.last}}"><a href="#/page/{{loop.index+1}}">Newer →</a></li>
+      <li class="previous {{"disabled" if loop.first}}"><a href="#/page/{{loop.index+1}}">← Older</a></li>
+      <li class="next {{"disabled" if loop.last}}"><a href="#/page/{{loop.index-1}}">Newer →</a></li>
     </ul>
 		{% endif %}
 		{% endfor %}
