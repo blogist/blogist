@@ -5,10 +5,11 @@
   "blog_title": "Jichao Ouyang's Blogist",
   "description": "<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed",
   "homepage": "http://oyanglul.us",
-  "theme": "lumen",
+  "theme": "flatly",
   "ghpage_repo": "https://github.com/jcouyang/jcouyang.github.com.git",
   "branch": "master",
   "google_analytic": "UA-32314154-1",
   "disqus_name": "jcoysblog",
+  "about_gist": "952eaaf9e5dba90e3cc1",
   "settings": true
 }

@@ -44,7 +44,9 @@
 			  </li>
 			  <li><a href="https://github.com/{{github_name}}">@{{github_name}}</a></li>
 			  <li><a href="https://gist.github.com/{{github_name}}.atom">rss feed</a></li>
-			  <li><a href="/#/about">about svbtle</a></li>
+				{% if about_gist %}
+			  <li><a href="/#/gist/{{about_gist}}">about</a></li>
+				{% endif %}
 			</ul>
 		</nav>				
 		<div id="blogist" class="blogist">
