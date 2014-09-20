@@ -4,11 +4,17 @@ if(window.location.pathname!="/"){
 
 var username = $("meta[name=username]").attr("content");
 
-var bloglistModel = new Model("bloglist",'get@https://api.github.com/users/'+username+'/gists');
 
 var blogdetailModel = Model.extend({
 	dataOptions:{dataType:"jsonp"}
 });
+
+var BloglistModel = Model.extend({
+	dataOptions:{
+		crossDomain: true, data:{base_url:"https://gist.github.com/" + username}}
+});
+
+var bloglistModel = new BloglistModel("bloglist",'post@https://sender.blockspring.com/api_v1/blocks/1baa8d4d0b12f88dbde97766afbf73c2?api_key=2a2cf36a672dc1dad01ce6e6a5281987');
 
 var BlogDetailView = View.extend({
 	el:$("#blogist"),
@@ -18,15 +24,24 @@ var BlogDetailView = View.extend({
 var BloglistView = View.extend({
 	model:bloglistModel,
 	el: $("#blogist"),
-	template:"src/templates/gistlist.html"
+	template:"src/templates/gistlist.html",
+	preProcessData:function(data){
+		return {results: JSON.parse(data.results)};
+	}
 });
 
 var router = new Router();
-
+var bloglist;
 router.get("/", function(){
-	var bloglist = new BloglistView();
-	bloglist.render();
+	loading()
+	bloglist = new BloglistView();
+	bloglist.render({page:1});
 	$('#disqus_thread').remove();
+});
+
+router.get("/page/:number", function(params){
+	loading();
+	bloglist.render({page:params.number});
 });
 
 var loadDisqus = function(){
@@ -37,6 +52,7 @@ var loadDisqus = function(){
 	disqus_title = "{{data.description}}"|| $('.gist-meta a').eq(1).text() || document.title;
 	DISQUS.reset({reload:true});
 };
+
 var blogDetailOf = function(gistid){
 	var model = new blogdetailModel(gistid,'get@https://gist.github.com/'+username+'/'+ gistid +".json");
 	var view = new BlogDetailView({model:model});
@@ -45,10 +61,12 @@ var blogDetailOf = function(gistid){
 };
 
 router.get("/gist/:gistid/?",function(params,data){
+	loading();
 	blogDetailOf(params.gistid);
 });
 
 router.get("/gist/:gistid/.+",function(params,data){
+	loading();
 	blogDetailOf(params.gistid);
 });
 
@@ -57,3 +75,27 @@ $('#overlord').hover(function(){
 },function(){
 	$(this).removeClass('overlord_active');
 });
+
+var loading = function(){
+	$('#blogist').html('<img src="stylesheets/img/loading-cubes.svg" class="center-block">');
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

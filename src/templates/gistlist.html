@@ -1,19 +1,24 @@
-<table class="table table-striped table-hover ">
-  <tbody>
-		{% for gist in data %}
-		<tr>
-			<td>
-			<a href="#/gist/{{gist.id}}/{{gist.description}}">
-				{% if gist.description  %}
-				{{gist.description}}
-				{% else %}
-				{% for name, file in gist.files %}
-				{{name}} 
-				{% endfor%}
-				{% endif %}
-			</a>
-			</td>
-		</tr>
-		{% endfor%}
-  </tbody>
-</table>
+<section>
+	{% for gistinpage in data.results %}
+	{% if loop.index == data.page %}
+	{% for gist in gistinpage %}
+		<article>
+			<h2><a href="#/gist/{{gist.id}}/{{gist.description}}">
+					{{gist.description_span| safe}}
+				</a>
+			</h2>
+			<div>{{gist.meta| safe}}</div>
+			{{gist.article| safe}}
+		</article>
+		<ul class="pager">
+      <li class="previous"><a href="#/gist/{{gist.id}}/{{gist.description}}">Continue reading →</a></li>
+    </ul>
+		<hr/>
+		{% endfor %}
+		<ul class="pager">
+      <li class="previous {{"disabled" if loop.first}}"><a href="#/page/{{loop.index-1}}">← Older</a></li>
+      <li class="next {{"disabled" if loop.last}}"><a href="#/page/{{loop.index+1}}">Newer →</a></li>
+    </ul>
+		{% endif %}
+		{% endfor %}
+</section>
