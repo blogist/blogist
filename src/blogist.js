@@ -46,7 +46,7 @@ router.get("/page/:number", function(params){
 
 var loadDisqus = function(){
 	if(!$('#disqus_thread').length)
-		$(".container .blogist").append($("<div id='disqus_thread'></div>"));
+		$("#blogist").append($("<div id='disqus_thread'></div>"));
 	disqus_identifier = window.location.hash.replace('#','');
 	disqus_url = window.location.href.replace('/#','');
 	disqus_title = "{{data.description}}"|| $('.gist-meta a').eq(1).text() || document.title;
