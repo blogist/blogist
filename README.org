@@ -6,6 +6,10 @@
 
 #+END_SRC
 
+*Now with Svbtle Like Menu*
+
+*You can try it out here like* [[http://oyanglul.us/user/githubname]] to see how your blog will looks like.
+
 [[https://travis-ci.org/jcouyang/blogist.svg]]
 
 ** 3 mins setup (assuming you are familiar with github, heroku and travis)
@@ -24,7 +28,7 @@
 sh install.sh
 #+END_SRC
 
-then you will get prompt about how to setup your blogist
+then you will get prompt about how to setup your blogist, alternatively you can download [[https://github.com/jcouyang/blogist/blob/master/config/settings.json][my setting]] and make change to it.
 
 you'll have to input  the following:(* required)
 - *github_name**: your github username :exclamation:IMPORTANT
@@ -79,13 +83,6 @@ visit one article like http://oyanglul.us/#/gist/10696702/Learn%20julia%20in%20Y
 - add this addon to any of your heroku app. then open https://scheduler.heroku.com/dashboard.
 - click add job then paste the curl you just copied.
 - set the frequency as often as you like to cache your blogist for seo.
-
-** Contribute
-
-*** run test
-#+BEGIN_SRC sh
-grunt mocha
-#+END_SRC
 
 ** Issues
 feel free posting issues here

@@ -1,6 +1,6 @@
 {
   "name": "blogist",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "blog with gist",
   "main": "index.html",
   "directories": {
@@ -17,7 +17,8 @@
   "keywords": [
     "blog",
 			"gist",
-			"blogist"
+			"blogist",
+			"svbtle"
   ],
   "author": "Jichao Ouyang",
   "license": "MIT",
