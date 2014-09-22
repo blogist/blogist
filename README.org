@@ -8,7 +8,7 @@
 
 *Now with Svbtle Like Menu*
 
-*You can try it out here like* [[http://oyanglul.us/user/<github name>]] to see how your blog will looks like.
+*You can try it out here like* [[http://oyanglul.us/user/githubname]] to see how your blog will looks like.
 
 [[https://travis-ci.org/jcouyang/blogist.svg]]
 
