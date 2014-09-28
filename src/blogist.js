@@ -1,6 +1,6 @@
-if(window.location.pathname!="/"){
-	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
-}
+// if(window.location.pathname!="/"){
+// 	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+// }
 
 var username = $("meta[name=username]").attr("content");
 

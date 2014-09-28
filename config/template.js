@@ -29,6 +29,7 @@ exports.template = function(grunt, init, done) {
 		grunt.file.write(".travis.yml",travis);
 		grunt.file.write("Gruntfile.js",gruntfile);
 		grunt.file.write("index.html",index);
+		grunt.file.write("404.html",index);
 		grunt.file.write("crawl.js",crawl);
 		grunt.file.write("configtravis.sh",configtravis);
 
