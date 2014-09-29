@@ -50,15 +50,14 @@ var loadDisqus = function(){
 		$("#blogist").append($("<div id='disqus_thread'></div>"));
 	disqus_identifier = window.location.hash.replace('#','');
 	disqus_url = window.location.href.replace('/#','');
-	disqus_title = "{{data.description}}"|| $('.gist-meta a').eq(1).text() || document.title;
+	disqus_title = $('h2.page-header').text()|| $('.gist-meta a').eq(1).text() || document.title;
 	DISQUS.reset({reload:true});
 };
 
 var blogDetailOf = function(gistid){
 	var model = new blogdetailModel(gistid,'get@https://gist.github.com/'+username+'/'+ gistid +".json");
 	var view = new BlogDetailView({model:model});
-	view.render({disqus_name:$('meta[name=disqus_name]').attr('content')});
-	loadDisqus();
+	view.render({disqus_name:$('meta[name=disqus_name]').attr('content')}).then(loadDisqus);
 };
 
 router.get("/gist/:gistid/?",function(params,data){
