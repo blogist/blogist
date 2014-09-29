@@ -29,7 +29,7 @@ describe('view test', function(){
 		});
 	});
 
-	xdescribe('blog list view',function(){
+	describe('blog list view',function(){
 		fakeData = {results:"wang dachui"};
 		it('render sucessfully', function(done){
 			var FakeModel = Model.extend({
