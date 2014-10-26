@@ -5,8 +5,11 @@
     <title>{{blog_title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="username" content="{{github_name}}">
+    <meta name="author_name" content="{{author_name}}">
+    <meta name="blog_title" content="{{blog_title}}">
 		<meta name="description" content="{{description}}">
 		<meta name="disqus_name" content="{{disqus_name}}">
+    <meta name="about_gist" content="{{about_gist}}">
 		<link rel="stylesheet" href="/stylesheets/gist.css" media="screen">
  		<link rel="stylesheet" href="/bower_components/bootswatch/{{theme}}/bootstrap.min.css" media="screen">
 	
@@ -27,27 +30,8 @@
 		
   </head>
   <body>
-		<h1 class="page-header">
-			<a href="#/">{{blog_title}}</a> <a href="https://gist.github.com/{{github_name}}.atom"><span class="mega-octicon octicon-bookmark" style="cursor:pointer;min-width: 32px; color:orange"></span></a>
-			<p class="lead">{{description}}</p>
-		</h1>	
-		<nav id="overlord" class="">
-			<figure id="logo_top" class="">
-			  <a href="/">Blogist</a>
-			</figure>
-			<figure id="hamburger">
-			  <a href="#menu" id="hamburger_button">Menu</a>
-			</figure>
-			<ul id="dropdown" class="onblog">
-			  <li class="dropdown_message">
-			    <a href="/"><span class="logoize">{{blog_title}}</span> {{description}}</a>
-			  </li>
-			  <li><a href="https://github.com/{{github_name}}">@{{github_name}}</a></li>
-			  <li><a href="https://gist.github.com/{{github_name}}.atom">rss feed</a></li>
-				{% if about_gist %}
-			  <li><a href="#/gist/{{about_gist}}">about</a></li>
-				{% endif %}
-			</ul>
+		<h1 class="page-header"></h1>	
+		<nav id="overlord">
 		</nav>				
 		<div id="blogist" class="blogist">
 		</div>

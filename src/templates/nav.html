@@ -1,0 +1,16 @@
+<figure id="logo_top" class="">
+	<a href="#/">{{data.blog_title}}</a>
+</figure>
+<figure id="hamburger">
+	<a href="#menu" id="hamburger_button">Menu</a>
+</figure>
+<ul id="dropdown" class="onblog">
+	<li class="dropdown_message">
+		<a href="#/"><span class="logoize">{{data.blog_title}}</span> {{data.description}}</a>
+	</li>
+	<li><a href="https://github.com/{{data.github_name}}">@{{data.github_name}}</a></li>
+	<li><a href="https://gist.github.com/{{data.github_name}}.atom">rss feed</a></li>
+	{% if data.about_gist %}
+	<li><a href="#/gist/{{data.about_gist}}">about</a></li>
+	{% endif %}
+</ul>

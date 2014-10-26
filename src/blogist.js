@@ -23,7 +23,31 @@ var BlogDetailView = View.extend({
 	el:$("#blogist"),
 	template:"src/templates/article.html"
 });
+var MetaModel = Model.extend({
+  refetch: function(){
+    return Q({blog_title:$("meta[name=blog_title]").attr("content"),
+              github_name:$("meta[name=username]").attr("content"),
+              description:$("meta[name=description]").attr("content"),
+              about_gist:$("meta[name=about_gist]").attr("content"),
+              author_name:$("meta[name=author_name]").attr("content")
+             });
+  }
+});
+var metaModel = new MetaModel();
+var BlogHeaderView = View.extend({
+  model: metaModel,
+  el: $("h1.page-header"),
+  template:"src/templates/title.html"
+});
 
+var BlogNavView = View.extend({
+  model: metaModel,
+  el: $("#overlord"),
+  template:"src/templates/nav.html"
+});
+
+new BlogHeaderView().render();
+new BlogNavView().render();
 var BloglistView = View.extend({
 	model:bloglistModel,
 	el: $("#blogist"),
@@ -36,7 +60,7 @@ var BloglistView = View.extend({
 var router = new Router();
 var bloglist;
 router.get("/", function(){
-	loading()
+	loading();
 	bloglist = new BloglistView();
 	bloglist.render({page:1});
 	$('#disqus_thread').remove();
