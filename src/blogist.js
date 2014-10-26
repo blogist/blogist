@@ -4,12 +4,14 @@ var blogdetailModel = Model.extend({
 	dataOptions:{dataType:"jsonp"}
 });
 
-var GIST_DIGEST_URL = 'post@https://sender.blockspring.com/api_v1/blocks/1baa8d4d0b12f88dbde97766afbf73c2?api_key=2a2cf36a672dc1dad01ce6e6a5281987';
+var GIST_DIGEST_URL = 'get@http://gist.github.com.ru/jcouyang/46bb290f1b99eef15639';
 
 var bloglistModelFor = function(name){
 	return Model.extend({
 		dataOptions:{
-			crossDomain: true, data:{base_url:"https://gist.github.com/" + name}}
+      data: {username:name},
+      dataType:'jsonp'
+    }
 	});
 };
 
@@ -27,7 +29,7 @@ var BloglistView = View.extend({
 	el: $("#blogist"),
 	template:"src/templates/gistlist.html",
 	preProcessData:function(data){
-		return {results: JSON.parse(data.results)};
+		return {results: data.result};
 	}
 });
 
@@ -81,9 +83,12 @@ var loading = function(){
 };
 
 // for trail user
-router.get('/user/:name', function(params){
+patharray = location.pathname.split('/');
+if(patharray.length === 2){
+  
 	loading();
-	var BloglistModel = bloglistModelFor(params.name);
+  
+	var BloglistModel = bloglistModelFor(patharray[1]);
 
 	var bloglistModel = new BloglistModel("bloglist",GIST_DIGEST_URL);
 
@@ -94,4 +99,4 @@ router.get('/user/:name', function(params){
 	bloglist = new TrailBloglistView();
 	bloglist.render({page:1});
 
-});
+};
