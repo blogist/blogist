@@ -5,7 +5,7 @@
     |/__\|/__\|/__\|/__\|/__\|/__\|/__\|
 
 #+END_SRC
-[[https://gitter.im/blogist/blogist?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge][[https://badges.gitter.im/Join Chat.svg]]]
+[[https://gitter.im/blogist/blogist?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge][https://badges.gitter.im/Join Chat.svg]]
 
 *Now with Svbtle Like Menu*
 
